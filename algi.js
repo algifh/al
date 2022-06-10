@@ -68,7 +68,7 @@ const getReffCode = (reffLink) => new Promise((resolve, reject) => {
             {
                 type: 'input',
                 name: 'reff',
-                message: 'Link Reff : ',
+                message: 'Link : ',
             },
             {
                 type: 'input',
@@ -89,7 +89,7 @@ const getReffCode = (reffLink) => new Promise((resolve, reject) => {
         let reffCode = await getReffCode(reff);
         let create = await request({ endpoint: "https://master.appha.es/lua/jokesphone/user/create.lua", data: `{"uv":"jokesphone","dtype":"adr","did":"${aid}@jokesphone","route":"jo_1","tags":{"mf":"Samsung","mcc":510,"mnc":1,"r":"10","v":"2.3.060522.212","l":"in_ID","c":"ID","platform":"gplay","aid":"${aid}","class":"Jokesphone_o"},"root":false,"imeiex":false,"version":"2.3.060522.212","version_num":212,"recommender":"${reffCode}"}` })
         if (create.res == "OK") {
-            console.log(`[ALgi FH] `, colors.FgCyan,
+            console.log(`[ALgi FH] =>`, colors.FgYellow,
                 `Success Add Credit [Refferal ${i + 1}]`,
                 colors.Reset);
             successNum++;
@@ -101,7 +101,7 @@ const getReffCode = (reffLink) => new Promise((resolve, reject) => {
         };
     };
 
-    console.log(`[ALgi FH] `, colors.FgRed,
+    console.log(``, colors.FgCyan,
                 `Added ${successNum} Done, Boot by ALgi FH [ ${moment().format("HH:mm:ss")} ]`,
                 colors.Reset);
 
